@@ -1,0 +1,28 @@
+{
+  "name": "lab3_1",
+  "version": "1.0.0",
+  "description": "Node.js labs",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js",
+    "start-server": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KmLig/Node.js-Labs.git"
+  },
+  "author": "KmLig",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KmLig/Node.js-Labs/issues"
+  },
+  "homepage": "https://github.com/KmLig/Node.js-Labs#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  },
+  "dependencies": {
+    "body-parser": "^1.20.1",
+    "express": "^4.18.2"
+  }
+}
