@@ -1,7 +1,8 @@
+const userArray = ["An", "Binh"];
+
 const requestHandler = (req, res) => {
   const url = req.url;
-  const method = req.method;
-  const userArray = ["An", "Binh"];
+  const method = req.method;  
   console.log(req.url, req.method);
 
   if (url === "/") {
