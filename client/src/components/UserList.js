@@ -6,7 +6,7 @@ const UserList = (props) => {
   useEffect(() => { setValue(props.props.users) }, [props.props.users]);
   
   const userMapping = users.map((user) => {
-    return <li key={user}>{user}</li>;
+    return <li>{user}</li>;
   });
   console.log(users);
   if (users !== undefined) {

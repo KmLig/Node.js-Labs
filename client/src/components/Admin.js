@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { useNavigate } from 'react-router-dom';
 
 class Admin extends Component {
   constructor(props) {
@@ -48,12 +49,16 @@ class Admin extends Component {
       .catch((error) => {
         console.log("Post user", error.message);
         alert("New user could not be posted\nError: " + error.message);
+      })
+      .finally(() => {
+        this.setState({
+          userName: "",
+        });
+        const navigate = useNavigate();
+        navigate('/');
       });
 
-    this.setState({
-      userName: "",
-    });
-    ;
+    
   };
   handleChange(event) {
     this.setState({
