@@ -14,11 +14,11 @@ class Admin extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
     alert(`The name you entered was: ${this.state.userName}`);
-    const newUser = this.state.userName;
-    console.log('newUser', newUser)
+    const user = {user: this.state.userName};
+    console.log('newUser', user)
     fetch('http://localhost:5000/', {
         method: "POST",
-        body: JSON.stringify(newUser),
+        body: JSON.stringify(user),
         headers: {
           "Content-Type": "application/json",
         },

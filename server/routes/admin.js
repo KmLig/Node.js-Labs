@@ -14,7 +14,7 @@ router.get('/', (req, res, next) => {
 
 router.post('/', (req, res, next) => {    
     console.log(typeof req.body !== "undefined" && req.body !== null)
-    console.log(req.body.user);
+    console.log(req.body);
     users.push(req.body.user);
     res.send(users);
 })
