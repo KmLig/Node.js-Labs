@@ -1,31 +1,24 @@
-import { render } from "@testing-library/react";
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 
-class UserList extends Component {
-  constructor(props) {
-    super(props);
-  }
-  componentDidMount() {
-    this.props.props.callAPI();
-  }
+const UserList = (props) => {
 
-  render() {
-    const { users } = this.props.props;
-    const userMapping = users?.map((user) => {
-      return <li>{user}</li>;
-    });
-    console.log(users);
-    if (users !== undefined) {
-      return (
-        <div>
-          <h1>Users</h1>
-          {userMapping}
-        </div>
-      );
-    } else {
-        return <h1>No Users</h1>;
-      }
+  const [users, setValue] = useState(props.props.users);
+  useEffect(() => { setValue(props.props.users) }, [props.props.users]);
+  
+  const userMapping = users.map((user) => {
+    return <li key={user}>{user}</li>;
+  });
+  console.log(users);
+  if (users !== undefined) {
+    return (
+      <div className="container">
+        <h1>Users</h1>
+        {userMapping}
+      </div>
+    );
+  } else {
+    return <h1>No Users</h1>;
   }
-}
+};
 
 export default UserList;
