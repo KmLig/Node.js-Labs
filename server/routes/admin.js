@@ -8,8 +8,8 @@ const router = express.Router();
 const users = ["An", "Binh"];
 
 router.get('/', (req, res, next) => {
-    res.sendFile(path.join(rootDir, 'views', 'admin.html'));
-    //res.send(users);
+    //res.sendFile(path.join(rootDir, 'views', 'admin.html'));
+    res.send(users);
 })
 
 router.post('/', (req, res, next) => {    
