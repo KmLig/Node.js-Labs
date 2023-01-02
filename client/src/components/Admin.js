@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { useNavigate } from 'react-router-dom';
+import { Navigate } from "react-router-dom";
 
 class Admin extends Component {
   constructor(props) {
@@ -7,6 +7,7 @@ class Admin extends Component {
 
     this.state = {
       userName: "",
+      redirect: false,
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -17,48 +18,7 @@ class Admin extends Component {
     alert(`The name you entered was: ${this.state.userName}`);
     const user = { user: this.state.userName };
     console.log("newUser", user);
-    fetch("http://localhost:5000/", {
-      method: "POST",
-      body: JSON.stringify(user),
-      headers: {
-        "Content-Type": "application/json",
-      },
-      credentials: "same-origin",
-    })
-      .then(
-        (response) => {
-          if (response.ok) {
-            return response;
-          } else {
-            var error = new Error(
-              "Error " + response.status + ": " + response.statusText
-            );
-            error.response = response;
-            throw error;
-          }
-        },
-        (error) => {
-          throw error;
-        }
-      )
-      .then((response) => response.json())
-      .then((response) => { 
-      console.log(response)
-      this.props.props.callAPI();}
-      )
-      .catch((error) => {
-        console.log("Post user", error.message);
-        alert("New user could not be posted\nError: " + error.message);
-      })
-      .finally(() => {
-        this.setState({
-          userName: "",
-        });
-        const navigate = useNavigate();
-        navigate('/');
-      });
-
-    
+    this.props.props.postUser(user);
   };
   handleChange(event) {
     this.setState({
@@ -87,6 +47,7 @@ class Admin extends Component {
                 onChange={(e) => this.handleChange(e)}
               />
             </label>
+            {this.state.redirect && <Navigate to="/users" replace={true} />}
             <input className="btn btn-primary ms-2 " type="submit" />
           </div>
         </form>

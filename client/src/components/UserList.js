@@ -4,7 +4,7 @@ const UserList = (props) => {
 
   const [users, setValue] = useState(props.props.users);
   useEffect(() => { setValue(props.props.users) }, [props.props.users]);
-  
+  console.log(users);
   const userMapping = users.map((user) => {
     return <li>{user}</li>;
   });
